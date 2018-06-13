@@ -1,0 +1,54 @@
+<div class="wrap1">
+<h1 class="text-center">Quandl Time Series API</h1>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="qtsForm">
+  <div class="form-group left-offset">
+    <label for="dbcode">Database Code: </label>
+    <input id="dbcode" type="text" name="databaseCode"  class="form-control" formControlName="databaseCode" required>
+    <label for="dscode">Dataset Code: </label>
+    <input id="dscode" type="text" name="datasetCode"  class="form-control" formControlName="datasetCode" required>
+  </div>
+  <div class="form-group">
+    <label for="sdate" class="block-label">Start Date: </label>
+    <input id="sdate" type="date" name="startDate"  class="form-control" formControlName="start" required>
+    <label for="edate" class="block-label">End Date: </label>
+    <input id="edate" type="date" name="endDate"  class="form-control" formControlName="end" required>
+  </div>
+  <div class="form-group">
+    <label for="lim" class="block-label">Limit: </label>
+    <input id="lim" type="number" name="limit"  min="0" class="form-control" formControlName="limit"
+    required>
+    <label for="ord" class="block-label">Order:</label>
+    <select id="ord" class="form-control" required formControlName="order" name="order"  >
+    <option *ngFor="let ord of os" [value]="ord">{{ord}}</option>
+    
+    </select>
+  </div>
+  <div class="form-group">
+    
+    <label for="col" class="block-label">Collapse:</label>
+    <select id="col" class="form-control" required  formControlName="collapse" name="collapse"  >
+    <option *ngFor="let col of cs" [value]="col">{{col}}</option>
+    </select>
+    <label for="tr" class="block-label"> Transformation:</label>
+    <select id="tr" class="form-control" required formControlName="transformation" name="transform"  >
+    <option *ngFor="let tr of ts" [value]="tr">{{tr}}</option>
+    </select>
+  </div>
+  <div class="form-group">    
+    
+    <div class="buttons">
+      <label for="submit" class="block-label">&nbsp;</label>
+      <button id="submit" type="submit" class="btn btn-success"
+      [disabled]="!qtsForm.valid">Search</button>
+    </div>
+    <div class="buttons">
+      <label for="test" class="block-label">&nbsp;</label>
+      <button id="test" type="button" class="btn btn-danger" (click)="resetForm()">Test</button>
+    </div>
+    
+    </div>
+  </form>
+</div>
+<hr />
+<app-qts-charts></app-qts-charts>

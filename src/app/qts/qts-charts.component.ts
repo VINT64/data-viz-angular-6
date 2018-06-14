@@ -36,10 +36,8 @@ export class QtsChartsComponent implements OnInit {
     console.log('Now chart is ' + str);
     this.activeChart = str;
   }
-  
   ngOnInit() {
     this.subscription = this.qtsService.latestCharts$.subscribe(newData => {
-      
       this.chartReady = false;
       this.model = newData;
       setTimeout(() => {

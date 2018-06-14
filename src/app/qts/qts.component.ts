@@ -39,11 +39,13 @@ export class QtsComponent implements OnInit {
     this.qtsService.defaultForm(this.qtsForm);
   }
   
-  chartReady = false;
+  loading = false;
   
   onSubmit() { 
+    this.loading = true;
     this.qtsService.sendRequest(
     this.qtsForm).subscribe({next: response => {
+      this.loading = false;
       if (response == 'success')
         console.log(response);
       else

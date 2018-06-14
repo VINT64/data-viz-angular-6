@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test101": {
+    "data-viz-angular-6": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/test101",
+            "outputPath": "dist/data-viz-angular-6",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -50,18 +50,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "test101:build"
+            "browserTarget": "data-viz-angular-6:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "test101:build:production"
+              "browserTarget": "data-viz-angular-6:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "test101:build"
+            "browserTarget": "data-viz-angular-6:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "test101-e2e": {
+    "data-viz-angular-6-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -103,11 +103,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "test101:serve"
+            "devServerTarget": "data-viz-angular-6:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "test101:serve:production"
+              "devServerTarget": "data-viz-angular-6:serve:production"
             }
           }
         },
@@ -123,5 +123,5 @@
       }
     }
   },
-  "defaultProject": "test101"
+  "defaultProject": "data-viz-angular-6"
 }

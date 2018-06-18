@@ -1,23 +1,6 @@
 <div class="container">
 
-  <div class="header">
-    <div class="navbar navbar-default">
-  <!-- TODO: rewrite like a separate module? -->
-      <p class="navbar-brand" >
-      <img src="assets/ALGOFI_LOGO.svg"
-      style="display: inline-block; padding-right: 5px; padding-bottom: 5px;"
-      width="25">DataViz</p>
-    
-      <ul class="nav navbar-nav">
-        <li routerLinkActive="active"
-        [routerLinkActiveOptions]="{exact:true}">
-        <a routerLink="/" >Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/about">About</a></li>
-        <li routerLinkActive="active"><a routerLink="/contact">Contact</a></li>
-        <!--TODO add contacts page-->
-      </ul>
-    </div>
-  </div>
+  <app-header></app-header>
   <div style="text-align:center">
     <h1>{{title}}</h1>
   </div>

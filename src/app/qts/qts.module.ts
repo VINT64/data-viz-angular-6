@@ -7,7 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common'
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { QtsChartsComponent, FormatDataPipe } from './qts-charts.component';
-//import { FormatDataPipe } from './format-data.pipe';
 import { DecimalPipe } from '@angular/common';
 
 @NgModule({

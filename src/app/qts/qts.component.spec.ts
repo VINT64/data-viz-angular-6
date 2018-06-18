@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { QtsComponent } from './qts.component';
+import { QtsModule } from './qts.module';
 
 describe('QtsComponent', () => {
   let component: QtsComponent;
@@ -8,7 +9,8 @@ describe('QtsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QtsComponent ]
+      declarations: [ ],
+      imports: [ QtsModule ],
     })
     .compileComponents();
   }));

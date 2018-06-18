@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { QtsService } from './qts.service';
+import { QtsModule } from './qts.module';
 
 describe('QtsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [QtsService]
+      providers: [QtsService],
+      imports: [ QtsModule ],
     });
   });
 

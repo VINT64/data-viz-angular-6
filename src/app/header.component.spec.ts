@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {APP_BASE_HREF} from '@angular/common';
 
 import { HeaderComponent } from './header.component';
+import { AppModule } from './app.module';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +10,9 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [ ],
+      imports: [ AppModule ],
+      providers: [{provide: APP_BASE_HREF, useValue : '/' }]
     })
     .compileComponents();
   }));

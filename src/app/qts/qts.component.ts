@@ -47,7 +47,7 @@ export class QtsComponent implements OnInit {
     this.qtsForm).subscribe({next: response => {
       this.loading = false;
       if (response == 'success')
-        console.log(response);
+        /*console.log(response); */
       else
         console.log(response);
         /* here test fails */

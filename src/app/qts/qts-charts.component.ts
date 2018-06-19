@@ -33,7 +33,7 @@ export class QtsChartsComponent implements OnInit {
   }
   
   setChart(str){
-    console.log('Now chart is ' + str);
+    /* console.log('Now chart is ' + str); */
     this.activeChart = str;
   }
   ngOnInit() {

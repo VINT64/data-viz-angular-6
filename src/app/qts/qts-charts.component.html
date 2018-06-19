@@ -1,54 +1,55 @@
 
 <div *ngIf="chartReady">
-			<h3>{{ model.stockName }}</h3>
-			<p>
-				<b>Newest Available Date:</b> {{ model.newestAvailableDate }}
-			</p>
-			<p>
-				<b>Oldest Available Date:</b> {{ model.oldestAvailableDate }}
-			</p>
-			
-			<hr />
-      <ul class="nav nav-tabs">
-				<li [class.active]="activeChart=='values'"><a (click)="setChart('values')">Unadjusted Values</a></li>
-				<li [class.active]="activeChart=='valuesAdj'"><a (click)="setChart('valuesAdj')">Adjusted Values</a></li>
-			</ul>
- <canvas #label="base-chart" [style.display]="activeChart=='values'?'none':'inherit'"
-      baseChart 
-      [chartType]="'line'"
-      [datasets]="model.chartData"
-      [labels]="model.chartLabels"
-      [options]="model.chartOptions"
-      [legend]="true"
-      
-      >
+  <h3>{{ model.stockName }}</h3>
+  <p>
+    <b>Newest Available Date:</b> {{ model.newestAvailableDate }}
+  </p>
+  <p>
+    <b>Oldest Available Date:</b> {{ model.oldestAvailableDate }}
+  </p>
+  
+  <hr />
+  <ul class="nav nav-tabs">
+    <li [class.active]="activeChart=='values'" class="text-center"><a (click)="setChart('values')">Unadjusted Values</a></li>
+    <li [class.active]="activeChart=='valuesAdj'" class="text-center"><a (click)="setChart('valuesAdj')">Adjusted Values</a></li>
+  </ul>
+  <!-- Can't use *ngIf, because it destroys and recreates canvas, which is expensive -->
+ <canvas #label="base-chart"
+    [style.display]="activeChart=='values'?'none':'inherit'"
+    baseChart 
+    [chartType]="'line'"
+    [datasets]="model.chartData"
+    [labels]="model.chartLabels"
+    [options]="model.chartOptions"
+    [legend]="true"
+  >
   </canvas>
-  <canvas #label2="base-chart" [style.display]="activeChart=='valuesAdj'?'none':'inherit'"
-      baseChart 
-      [chartType]="'line'"
-      [datasets]="model.chartDataAdj"
-      [labels]="model.chartLabels"
-      [options]="model.chartOptions"
-      [legend]="true"
-      
-      >
+  <canvas #label2="base-chart"
+    [style.display]="activeChart=='valuesAdj'?'none':'inherit'"
+    baseChart 
+    [chartType]="'line'"
+    [datasets]="model.chartDataAdj"
+    [labels]="model.chartLabels"
+    [options]="model.chartOptions"
+    [legend]="true"    
+  >
   </canvas>
   <br />
   <hr />
   <h2 class="text-center">Table Results</h2>
-  <div style="overflow-x:auto; padding:20px">
+  <div >
     <table id="myTable" class="table table-hover table-bordered text-center" >
       <thead>
         <tr>
           <th class="text-center">Index</th>
-          <th *ngFor="let column of model.columnNames" style="/*white-space: nowrap;*/">
+          <th *ngFor="let column of model.columnNames">
           {{ column }}</th>
         </tr>
       </thead>
       <tbody>
       <tr *ngFor="let dataElement of model.tableData; let i = index">
         <td><b>{{ i + 1 }}</b></td>
-        <td *ngFor="let dataCol of dataElement" style="white-space: nowrap;">
+        <td *ngFor="let dataCol of dataElement">
         {{ dataCol | formatData }} </td>
       </tr>
       </tbody>

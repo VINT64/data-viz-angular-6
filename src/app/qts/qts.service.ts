@@ -139,7 +139,7 @@ export class QtsService {
             }, {
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)'          
-          }];
+          }],
           columnNames: response.column_names,
           tableData: response.data,
           chartOptions: {}

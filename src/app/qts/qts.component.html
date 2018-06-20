@@ -64,4 +64,4 @@
     </form>
   </div>
 </div>
-<app-qts-charts #charts></app-qts-charts>
+<app-qts-charts #charts (ready)="stopLoading()"></app-qts-charts>

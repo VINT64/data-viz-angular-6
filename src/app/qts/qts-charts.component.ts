@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, SimpleChanges, OnChanges, Pipe, PipeTransform } from '@angular/core';
+import { Component, OnInit, ViewChild, SimpleChanges, OnChanges, Pipe, PipeTransform, Input, Output, EventEmitter } from '@angular/core';
 import { QtsService } from './qts.service';
 import { Subscription }   from 'rxjs';
 import { RepresentationData }   from './data';
@@ -32,22 +32,25 @@ export class QtsChartsComponent implements OnInit {
   constructor(private qtsService : QtsService) {  
   }
   
+  @Output() ready = new EventEmitter<boolean>();
+  
   setChart(str){
     /* console.log('Now chart is ' + str); */
     this.activeChart = str;
   }
   ngOnInit() {
     this.subscription = this.qtsService.latestCharts$.subscribe(newData => {
-      this.chartReady = false;
+      this.chartsReady = false;
       this.model = newData;
       setTimeout(() => {
 /* without timeout chart will not disappear from the page, thus, it will not be re-initialised, its number of columns will not change etc... */      
-       this.chartReady = true;
+        this.chartsReady = true;
+        this.ready.emit(true);
       }, 50);
     });
   }
   
-  chartReady = false;
+  @Input('showCharts') chartsReady = false;
   oldestAvailableDate = '';
   newestAvailableDate = '';
   stockName = '';

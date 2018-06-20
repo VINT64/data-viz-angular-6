@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ViewChild, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { QtsService } from './qts.service';
 import { RequestData } from './data';
@@ -42,14 +42,22 @@ export class QtsComponent implements OnInit {
   clearForm(){
     this.qtsForm.reset();
   }
+  
   loading = false;
+  
+  stopLoading(){
+    this.loading = false;
+  }
+  
+  @ViewChild('charts') charts: any;
   
   onSubmit() { 
     this.loading = true;
+    this.charts.chartsReady = false;
     this.qtsService.sendRequest(
     this.qtsForm).subscribe({next: response => {
-        this.loading = false;
         if (response == 'success'){
+          
         }
         else{
           console.log(response); 

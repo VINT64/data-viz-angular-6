@@ -45,21 +45,21 @@ export class QtsComponent implements OnInit {
     this.loading = true;
     this.qtsService.sendRequest(
     this.qtsForm).subscribe({next: response => {
-      this.loading = false;
-      /*
-      if (response == 'success')
-        console.log(response);
-        
-      else
-         console.log(response); 
-      */ /* here test fails */  
+        this.loading = false;
+        if (response == 'success'){
+        }
+        else{
+          console.log(response); 
+          /* here test fails */
+        }
       },
         
-      error: err => {console.error(err)
-      /* here test fails too */
+      error: err => {console.error(err);
+        this.loading = false;
+        /* here test fails too */
       },
       complete: () => {}
-      }); 
+    }); 
   }
   
 }

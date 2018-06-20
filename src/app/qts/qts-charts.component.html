@@ -1,48 +1,60 @@
 
 <div *ngIf="chartReady">
-  <h3>{{ model.stockName }}</h3>
-  <p>
-    <b>Newest Available Date:</b> {{ model.newestAvailableDate }}
-  </p>
-  <p>
-    <b>Oldest Available Date:</b> {{ model.oldestAvailableDate }}
-  </p>
+  <div class="col-md-12">
+    <hr />
+    <h3>{{ model.stockName }}</h3>
+    <p>
+      <b>Newest Available Date:</b> {{ model.newestAvailableDate }}
+    </p>
+    <p>
+      <b>Oldest Available Date:</b> {{ model.oldestAvailableDate }}
+    </p>
+    
+    <hr />
   
-  <hr />
-  <ul class="nav nav-tabs">
-    <li [class.active]="activeChart=='values'" class="text-center"><a (click)="setChart('values')">Unadjusted Values</a></li>
-    <li [class.active]="activeChart=='valuesAdj'" class="text-center"><a (click)="setChart('valuesAdj')">Adjusted Values</a></li>
-  </ul>
-  <!-- Can't use *ngIf, because it destroys and recreates canvas, which is expensive -->
- <canvas #label="base-chart"
-    [style.display]="activeChart=='values'?'none':'inherit'"
-    baseChart 
-    [chartType]="'line'"
-    [datasets]="model.chartData"
-    [labels]="model.chartLabels"
-    [options]="model.chartOptions"
-    [legend]="true"
-  >
-  </canvas>
-  <canvas #label2="base-chart"
-    [style.display]="activeChart=='valuesAdj'?'none':'inherit'"
-    baseChart 
-    [chartType]="'line'"
-    [datasets]="model.chartDataAdj"
-    [labels]="model.chartLabels"
-    [options]="model.chartOptions"
-    [legend]="true"    
-  >
-  </canvas>
-  <br />
-  <hr />
-  <h2 class="text-center">Table Results</h2>
-  <div >
-    <table id="myTable" class="table table-hover table-bordered text-center" >
+  </div>
+    <!-- Can't use *ngIf, because it destroys and recreates canvas, which is expensive -->
+  <div class="col-md-12 table-responsive">
+    <ul class="nav nav-tabs">
+      <li [class.active]="activeChart=='values'"><a (click)="setChart('values')">Unadjusted Values</a></li>
+      <li [class.active]="activeChart=='valuesAdj'"><a (click)="setChart('valuesAdj')">Adjusted Values</a></li>
+    </ul>
+    <div class ="tab-content" [style.display]="activeChart=='values'?'none':'inherit'"
+      >
+      <h3 class="text-center">Unadjusted values</h3>
+      <canvas #label="base-chart"
+      baseChart 
+      [chartType]="'line'"
+      [datasets]="model.chartData"
+      [labels]="model.chartLabels"
+      [colors]="model.chartColors"
+      [options]="model.chartOptions"
+      [legend]="true"
+      >
+    </canvas>
+    </div>
+    <div class ="tab-content" [style.display]="activeChart=='valuesAdj'?'none':'inherit'"
+      >
+      <h3 class="text-center">Adjusted values</h3>
+      <canvas #label2="base-chart"
+      baseChart 
+      [chartType]="'line'"
+      [datasets]="model.chartDataAdj"
+      [labels]="model.chartLabels"
+      [colors]="model.chartColors"
+      [options]="model.chartOptions"
+      [legend]="true"    
+      >
+      </canvas>
+    </div>
+    <hr />
+    <h2 class="text-center">Table Results</h2>
+    <table class="table table-hover table-bordered table-nowrap text-center"
+    >
       <thead>
         <tr>
           <th class="text-center">Index</th>
-          <th *ngFor="let column of model.columnNames">
+          <th  class="text-center" *ngFor="let column of model.columnNames">
           {{ column }}</th>
         </tr>
       </thead>
@@ -61,5 +73,6 @@
         </tr>
       </thead>
     </table>
+  
   </div>
 </div>

@@ -55,14 +55,7 @@ export class QtsChartsComponent implements OnInit {
     return str.charAt(0).toUpperCase() + str.slice(1);
   };
   
-  drawChart(labels, openValues, highValues, lowValues, closeValues) {
-
-  };
-
-  drawChartAdj(labels, openValues, highValues, lowValues, closeValues) {
-
-  };
-   ngOnDestroy() {
-   this.subscription.unsubscribe();
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

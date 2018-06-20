@@ -21,18 +21,18 @@ export class RepresentationData{
   chartData: {
     label: string,
     data: number[],
-    backgroundColor: string,
-    borderColor: string,
     borderWidth: number,
     fill: boolean
   }[];
   chartDataAdj: {
     label: string,
     data: number[],
-    backgroundColor: string,
-    borderColor: string,
     borderWidth: number,
     fill: boolean
+  }[];
+  chartColors: {
+    backgroundColor: string,
+    borderColor: string
   }[];
   columnNames: string[];
   tableData: any[][];

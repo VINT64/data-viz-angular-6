@@ -1,3 +1,11 @@
+.ng-valid[required]  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
 .spin-rotation {
 		animation-name: spin;
 		animation-duration: 4000ms;
@@ -17,34 +25,12 @@
 		display: inline-block;
 	}
 
-	#search-btn-div {
-		padding-right: 2px;
-		padding-left: 0px;
-	}
-
-	#cancel-btn-div {
-		padding-right: 0px;
-		padding-left: 2px;
-	}
-
 	@keyframes spin {
 		from {transform: rotate(0deg);}
 		to {transform: rotate(360deg);}
 	}
-	/* Responsive: Portrait tablets and up */
-	@media screen and (max-width: 991px) {
 
-		#cancel-btn-div, #search-btn-div {
-			padding-right: 0px;
-			padding-left: 0px;
-		}
-
-		#cancel-btn-div {
-			padding-top: 10px;
-		}
-
-	}
-/***/
+  /***/
 
 .loading {
 		position: fixed;

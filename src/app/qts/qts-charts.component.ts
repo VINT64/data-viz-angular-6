@@ -51,9 +51,6 @@ export class QtsChartsComponent implements OnInit {
   oldestAvailableDate = '';
   newestAvailableDate = '';
   stockName = '';
-  capitalizeFirstLetter(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
   
   ngOnDestroy() {
     this.subscription.unsubscribe();

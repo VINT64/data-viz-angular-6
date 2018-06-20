@@ -11,6 +11,10 @@ export class ResponseData{
   newest_available_date: string;
   oldest_available_date: string;
   column_names: string[];
+  dataset_code: string;
+  start_date: string;
+  end_date: string;
+  collapse: string;
 }
 
 export class RepresentationData{

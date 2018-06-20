@@ -39,6 +39,9 @@ export class QtsComponent implements OnInit {
     this.qtsService.defaultForm(this.qtsForm);
   }
   
+  clearForm(){
+    this.qtsForm.reset();
+  }
   loading = false;
   
   onSubmit() { 

@@ -24,6 +24,11 @@ export class QtsService {
     collapse: RequestData.collapses[4]
     });
   }
+  
+  capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+  
   /* TODO make separate config file */
   private readonly url = 'https://data-viz-v1.herokuapp.com/services/dummyRequest';
   private readonly apiKey = 'DKczFdjuL_16KZVxeZKk';
@@ -55,7 +60,7 @@ export class QtsService {
         next: r => {
         
         var response = r.dataset;  
-        //console.log(response);
+        console.log(response);
         var labels: string[] = [];        
         var openValues: number[] = [];
         var highValues: number[] = [];
@@ -142,7 +147,19 @@ export class QtsService {
           }],
           columnNames: response.column_names,
           tableData: response.data,
-          chartOptions: {}
+          chartOptions: {
+            title: {
+              display: true,
+              text: response.dataset_code + ' Stock Price Variation From "' + this.datePipe.transform(response.start_date, this.format) + '" To "' + this.datePipe.transform(response.end_date, this.format) + '" - Collapse: ' + this.capitalizeFirstLetter(response.collapse)
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: false
+                }
+              }]
+            }
+          }
         }
         
         

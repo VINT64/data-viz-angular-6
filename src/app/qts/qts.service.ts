@@ -60,7 +60,7 @@ export class QtsService {
         next: r => {
         
         var response = r.dataset;  
-        console.log(response);
+        //console.log(response);
         var labels: string[] = [];        
         var openValues: number[] = [];
         var highValues: number[] = [];

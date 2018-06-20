@@ -45,15 +45,23 @@
       </div>
       <div class="col-md-12">
         <label for="test" class="block-label">&nbsp;</label>
-        <button id="test" type="button" class="btn btn-danger btn-block" (click)="clearForm()">Clear</button>
-      </div>
-      <div class="col-md-12">
-        <label for="test" class="block-label">&nbsp;</label>
-        <button id="test" type="button" class="btn btn-danger btn-block" (click)="resetForm()">Test</button>
+        <button id="test" type="button" class="btn btn-danger btn-block" (click)="charts.chartReady = false">Clear</button>
       </div>
       
+      
       </div>
+      
+      <div class="col-md-12">
+        <button id="test" type="button" class="btn btn-warning btn-block" (click)="clearForm()">Clear form</button>
+      </div>
+      
+      <div class="col-md-12">
+        <button id="test" type="button" class="btn btn-warning btn-block" (click)="resetForm()">Default form</button>
+      </div>
+      
+      
+      
     </form>
   </div>
 </div>
-<app-qts-charts></app-qts-charts>
+<app-qts-charts #charts></app-qts-charts>

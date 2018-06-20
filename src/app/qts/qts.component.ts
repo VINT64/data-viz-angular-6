@@ -2,6 +2,8 @@ import { ViewChild, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { QtsService } from './qts.service';
 import { RequestData } from './data';
+import { QtsChartsComponent } from './qts-charts.component';
+
 @Component({
   selector: 'app-qts',
   templateUrl: './qts.component.html',
@@ -49,7 +51,7 @@ export class QtsComponent implements OnInit {
     this.loading = false;
   }
   
-  @ViewChild('charts') charts: any;
+  @ViewChild('charts') charts: QtsChartsComponent;
   
   onSubmit() { 
     this.loading = true;

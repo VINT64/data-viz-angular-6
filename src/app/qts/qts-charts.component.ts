@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, SimpleChanges, OnChanges, Pipe, PipeTransform, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, SimpleChanges, OnChanges, Pipe, PipeTransform, Output, EventEmitter } from '@angular/core';
 import { QtsService } from './qts.service';
 import { Subscription }   from 'rxjs';
 import { RepresentationData }   from './data';
@@ -50,7 +50,7 @@ export class QtsChartsComponent implements OnInit {
     });
   }
   
-  @Input('showCharts') chartsReady = false;
+  chartsReady = false;
   oldestAvailableDate = '';
   newestAvailableDate = '';
   stockName = '';

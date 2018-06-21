@@ -1,5 +1,5 @@
 import { ViewChild, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms'
 import { QtsService } from './qts.service';
 import { RequestData } from './data';
 import { QtsChartsComponent } from './qts-charts.component';
@@ -18,6 +18,60 @@ export class QtsComponent implements OnInit {
     this.createForm();
     this.resetForm();
   }
+    
+  dateUpdate: Date = null;
+  
+  startDateValidator: ValidatorFn = (c: FormControl) => {
+    if (c.value == null)
+      return null; //Validators.required will cover this
+    let startDate = new Date(c.value),
+    currentDay = new Date(new Date().setUTCHours(0, 0, 0, 0));
+    if (startDate > currentDay) 
+      return  {in_past: false}
+    if (this.qtsForm != undefined && this.qtsForm.value.end != null){
+      let endDate = new Date(this.qtsForm.value.end);
+      //cross-check
+      if (this.dateUpdate == null){
+        //initialise cross-check with endDate
+        this.dateUpdate = startDate; 
+        this.qtsForm.controls.end.updateValueAndValidity();
+      }
+      else{
+        //endDate initialised cross-check
+        endDate = this.dateUpdate;
+        this.dateUpdate = null;        
+      }
+      if (startDate > endDate)  
+       return {later_than_end_date: false};
+    }
+    return null;
+  }
+  
+  endDateValidator: ValidatorFn = (c: FormControl) => {
+    if (c.value == null)
+      return null; //Validators.required will cover this
+    let endDate = new Date(c.value),
+    currentDay = new Date(new Date().setUTCHours(0, 0, 0, 0));
+    if (endDate > currentDay) 
+      return  {in_past: false}
+    if (this.qtsForm != undefined && this.qtsForm.value.start != null){
+      let startDate = new Date(this.qtsForm.value.start);
+      //cross-check
+      if (this.dateUpdate == null){
+        //initialise cross-check with startDate
+        this.dateUpdate = endDate; 
+        this.qtsForm.controls.start.updateValueAndValidity();
+      }
+      else{
+        //startDate initialised cross-check
+        startDate = this.dateUpdate;
+        this.dateUpdate = null;
+      }
+      if (startDate > endDate)
+        return {earlier_than_start_date: false};
+    }
+    return null;
+  }
   
   qtsForm: FormGroup;
   
@@ -29,8 +83,8 @@ export class QtsComponent implements OnInit {
     this.qtsForm = this.fb.group({
       databaseCode: ['', Validators.required],
       datasetCode: ['', Validators.required],
-      start: ['', Validators.required],
-      end: ['', Validators.required],
+      start: ['', [Validators.required, this.startDateValidator]],
+      end: ['', [Validators.required, this.endDateValidator]],
       limit: ['', [Validators.required, Validators.min(0) ] ],
       order: ['', Validators.required],
       transformation: ['', Validators.required],

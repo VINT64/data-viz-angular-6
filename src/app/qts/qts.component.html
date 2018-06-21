@@ -50,8 +50,8 @@
       </div>
       
       
-      </div>
-      
+      </div >
+      <div *ngIf="devMode">
       <div class="col-md-12">
         <button id="test" type="button" class="btn btn-warning btn-block" (click)="clearForm()">Clear form</button>
       </div>
@@ -59,7 +59,7 @@
       <div class="col-md-12">
         <button id="test" type="button" class="btn btn-warning btn-block" (click)="resetForm()">Default form</button>
       </div>
-      
+      </div>
       
       
     </form>

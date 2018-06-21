@@ -1,4 +1,4 @@
-import { ViewChild, Component, OnInit } from '@angular/core';
+import { ViewChild, Component, OnInit, isDevMode } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, ValidatorFn } from '@angular/forms'
 import { QtsService } from './qts.service';
 import { RequestData } from './data';
@@ -18,7 +18,8 @@ export class QtsComponent implements OnInit {
     this.createForm();
     this.resetForm();
   }
-    
+  
+  devMode = isDevMode();
   dateUpdate: Date = null;
   
   startDateValidator: ValidatorFn = (c: FormControl) => {
@@ -59,12 +60,12 @@ export class QtsComponent implements OnInit {
       return null; //Validators.required will cover this
     }
     let endDate = new Date(c.value),
-    /*currentDay = new Date(new Date().setUTCHours(0, 0, 0, 0));
+    currentDay = new Date(new Date().setUTCHours(0, 0, 0, 0));
     if (endDate > currentDay){
       this.dateUpdate = null; //clear cross-checks 
       return  {in_past: false}
     }
-    */
+    
     if (this.qtsForm != undefined && this.qtsForm.value.start != null){
       let startDate = new Date(this.qtsForm.value.start);
       //cross-check
@@ -72,14 +73,14 @@ export class QtsComponent implements OnInit {
         //initialise cross-check with startDate
         this.dateUpdate = endDate; 
         this.qtsForm.controls.start.updateValueAndValidity();
-        console.log(this.dateUpdate);
+        //console.log(this.dateUpdate);
       }
       else{
         //startDate initialised cross-check
         startDate = this.dateUpdate;
         this.dateUpdate = null;
       }
-      console.log('End says: start = ' + startDate.toDateString() + ', end = ' + endDate.toDateString() + ' ' + this.dateUpdate);
+      //console.log('End says: start = ' + startDate.toDateString() + ', end = ' + endDate.toDateString() + ' ' + this.dateUpdate);
       if (startDate > endDate)
         return {earlier_than_start_date: false};
     }

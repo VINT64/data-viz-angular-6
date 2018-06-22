@@ -1,3 +1,5 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
 .ng-valid[required]  {
   border-left: 5px solid #42A948; /* green */
 }
@@ -150,3 +152,22 @@
 	    transform: rotate(360deg);
 	  }
 	}
+
+/* 
+  * Author: Isabel Castillo
+  * https://isabelcastillo.com/error-info-messages-css#jl-down-2
+  */
+
+
+.error {
+    border-radius:.5em;
+    color: #D8000C;
+    background-color: #FFD2D2;
+    margin: 10px 0px;
+    padding:12px;
+}
+.error i {
+    margin:10px 22px;
+    font-size:2em;
+    vertical-align:middle;
+}

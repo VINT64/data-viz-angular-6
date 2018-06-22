@@ -120,24 +120,31 @@ export class QtsComponent implements OnInit {
     this.loading = false;
   }
   
+  
+  
   @ViewChild('charts') charts: QtsChartsComponent;
   
+  error = false;
   onSubmit() { 
     this.loading = true;
     this.charts.chartsReady = false;
+    this.error = false;
     this.qtsService.sendRequest(
     this.qtsForm).subscribe({next: response => {
         if (response == 'success'){
-          
+          this.error = false;
         }
         else{
-          console.log(response); 
+          console.log(response);
+          this.loading = false;
+          this.error = true;
           /* here test fails */
         }
       },
         
       error: err => {console.error(err);
         this.loading = false;
+        this.error = true;
         /* here test fails too */
       },
       complete: () => {}

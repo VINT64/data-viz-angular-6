@@ -46,7 +46,7 @@
       </div>
       <div class="col-md-12">
         <label for="test" class="block-label">&nbsp;</label>
-        <button id="test" type="button" class="btn btn-danger btn-block" (click)="charts.chartReady = false">Clear</button>
+        <button id="test" type="button" class="btn btn-danger btn-block" (click)="charts.chartsReady = false; error = false">Clear</button>
       </div>
       
       
@@ -63,6 +63,12 @@
       
       
     </form>
+  </div>
+</div>
+<div *ngIf="error">
+  <hr>
+  <div class="error">
+     <i class="fa fa-times-circle"></i>Error occured
   </div>
 </div>
 <app-qts-charts #charts (ready)="stopLoading()"></app-qts-charts>

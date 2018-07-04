@@ -32,7 +32,7 @@ export class QtsService {
   };
   
   /* TODO make separate config file */
-  private readonly url = 'https://data-viz-v1.herokuapp.com/services/dummyRequest';
+  private readonly url = 'https://data-viz-spring.herokuapp.com/services/dummyRequest';
   private readonly apiKey = 'DKczFdjuL_16KZVxeZKk';
   colIndex = -1;
   format = 'd-M-yyyy';

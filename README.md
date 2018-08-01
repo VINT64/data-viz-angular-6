@@ -25,3 +25,42 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# Instruction draft
+
+DataViz is a Java web application that retrieves financial data from financial API sources and displays those data using ChartJs.
+
+### The technologies used are:
+
+* JavaScript
+* Node.js as the deployment server
+* Angular 6 as a front-end web application framework
+* Chart.js as JavaScript charting library
+* Jasmine as a testing framework for JavaScript (finish)
+* Karma 1.0 to run Jasmine tests on several browsers (finish)
+* Express framework.
+
+Deployed on:
+
+* Heroku with a pipeline that serves the Reviewing, Staging and Production phases
+
+Continous Integration:
+
+* Codeship (implement)
+
+## How to create an AngularJS App and deploy it on Heroku?
+Heroku doesn't allow developpers to deploy static web pages, so in order to publish your frontend application, it should be running on a server. In our case, we're gonna be using Node.js
+
+### What do you need?
+Make sure to have installed on your machine:
+
+* Node.js
+* Angular CLI
+* Git
+* Heroku CLI
+
+### Installation (draft)
+
+Launch `npm install` to download and install required dependencies (~350 MB)
+
+To build and start server type `ng serve`. For build-only type `ng build`. Built server lies in `/dist` directory. 

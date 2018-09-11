@@ -80,7 +80,6 @@ export class QtsComponent implements OnInit {
         startDate = this.dateUpdate;
         this.dateUpdate = null;
       }
-      //console.log('End says: start = ' + startDate.toDateString() + ', end = ' + endDate.toDateString() + ' ' + this.dateUpdate);
       if (startDate > endDate)
         return {earlier_than_start_date: false};
     }

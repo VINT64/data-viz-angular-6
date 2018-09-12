@@ -73,7 +73,6 @@ export class QtsComponent implements OnInit {
         //initialise cross-check with startDate
         this.dateUpdate = endDate; 
         this.qtsForm.controls.start.updateValueAndValidity();
-        //console.log(this.dateUpdate);
       }
       else{
         //startDate initialised cross-check
@@ -118,8 +117,6 @@ export class QtsComponent implements OnInit {
   stopLoading(){
     this.loading = false;
   }
-  
-  
   
   @ViewChild('charts') charts: QtsChartsComponent;
   

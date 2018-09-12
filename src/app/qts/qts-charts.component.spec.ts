@@ -9,7 +9,6 @@ describe('QtsChartsComponent', () => {
   let fixture: ComponentFixture<QtsChartsComponent>;
   let bla: QtsService;
   beforeEach(async(() => {
-    //bla = new QtsService();
     TestBed.configureTestingModule({
       declarations: [ ],
       imports: [ QtsModule ],

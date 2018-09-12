@@ -35,7 +35,6 @@ export class QtsChartsComponent implements OnInit {
   @Output() ready = new EventEmitter<boolean>();
   
   setChart(str){
-    /* console.log('Now chart is ' + str); */
     this.activeChart = str;
   }
   ngOnInit() {
@@ -43,7 +42,8 @@ export class QtsChartsComponent implements OnInit {
       this.chartsReady = false;
       this.model = newData;
       setTimeout(() => {
-/* without timeout chart will not disappear from the page, thus, it will not be re-initialised, its number of columns will not change etc... */      
+/* without timeout chart will not disappear from the page, thus, it will not
+ be re-initialised, its number of columns will not change etc... */
         this.chartsReady = true;
         this.ready.emit(true);
       }, 50);
